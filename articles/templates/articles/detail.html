@@ -1,0 +1,31 @@
+{% extends "articles/list_articles.html" %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'articles/detail.css' %}">
+<link rel="stylesheet" href="{% static 'articles/dist/css/bootstrap.min.css' %}" >
+
+<body>
+    <div class="container article-container">
+        <h1 class="article-title">{{ article.title }}</h1>
+
+        <!-- Afficher l'image de l'article -->
+        {% if article.image %}
+            <div class="article-image">
+                <img src="{{ article.image.url }}" alt="{{ article.title }}" style="height: 100px; width: 150px;">
+            </div>
+        {% endif %}
+
+        <p class="article-summary">{{ article.sumary }}</p>
+
+        <div class="article-content">
+            {{ article.content|linebreaks }}
+        </div>
+
+        <p class="article-date">Publié le : {{ article.date_pub|date:"d F Y" }}</p>
+        <a href="{% url 'updatev' article.id %}" class="btn btn-sm btn-primary">Modifier</a>
+        <a href="{% url 'delatev' article.id %}" class="btn btn-sm btn-danger">Supprimer</a>
+        <a href="#" class="back-link" onClick="history.back();">← Retour</a>
+    </div>
+</body>
+{% endblock %}

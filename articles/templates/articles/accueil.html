@@ -1,0 +1,16 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog</title> 
+    <link rel="stylesheet" href="{% static 'articles/css/bootstrap.css'%}">
+</head>
+<body>
+    {% include "articles/navbar.html" %}
+    {% block content %}
+    <h1>Bienvenue dans google classroom</h1>
+    {% endblock %}
+</body>
+</html>
